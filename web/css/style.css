@@ -1,0 +1,941 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+/* Nav */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul {
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+p {
+    color: #555;
+}
+
+.container {
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+/* 2 colunas */
+.col-2 {
+    flex-basis: 50%;
+    min-width: 300px;
+}
+
+.col-2 img {
+    max-width: 100%;
+    padding: 50px 0;
+}
+
+.col-2 h1 {
+    font-size: 40px;
+    line-height: 60px;
+    margin: 25px 0;
+    text-align: center;
+}
+
+.col-2 h3 {
+  font-size: 90px;
+  line-height: 60px;
+  margin: 25px 0;
+  text-align: center;
+}
+.col-2 h4 {
+  font-size: 14px;
+  line-height: 60px;
+  margin: 25px 0;
+  text-align: center;
+}
+
+/* Botão */
+.btn {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0);
+    display: inline-block;
+    background: hsl(58, 93%, 48%);
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.btn:hover {
+    background: #563434;
+}
+
+/* Header */
+header {
+  background: rgb(255,241,19);
+  
+  
+}
+.headerinicio{
+  background: linear-gradient(180deg, rgba(255,241,19,1) 13%, rgba(255,255,255,1) 100%);
+}
+
+header row {
+    margin-top: 70px;
+}
+
+header a:hover{
+    color: white;
+}
+
+/* Categorias */
+.categorias {
+    margin: 70px 0;
+    text-align: center;
+
+}
+
+/* 3 Colunas */
+.col-3 {
+    flex-basis: 30%;
+    min-width: 250px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.col-3 img {
+    width: 100%;
+    align-items: center;
+
+}
+
+.container-2 {
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.row {
+    text-align: center;
+
+}
+/* 4 Colunas */
+
+.col-4 {
+    display: inline-block;
+    vertical-align: top;
+    width: 23%;
+    padding: 10px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    transition: transform 0.5s;
+
+}
+
+.col-4 img {
+    height: 240px;
+    width: 100%;
+}
+
+.col-4 h4,
+.col-4 p {
+    text-align: left;
+    margin-top: 10px;
+}
+
+/* Titulo */
+.titulo {
+    text-align: center;
+    margin: 0 auto 80px;
+    position: relative;
+    line-height: 60px;
+    color: #555;
+}
+
+/* Linha embaixo do titulo necessita de um content mesmo que vazio */
+.titulo:after {
+    content: '';
+    background: #ea5e27;
+    width: 80px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h4 {
+
+    color: #555;
+    font-weight: normal;
+}
+
+.col-4 p {
+    font-size: 14px;
+    text-align: left;
+}
+
+.col-4:hover {
+    transform: translateY(-5px);
+}
+
+/*---------Sobre Nós---------*/
+
+small {
+    color: #555;
+}
+
+.sobre {
+    padding: 30px 0;
+}
+
+.col-2 .sobre-img {
+    width: 100%;
+    padding: 30px;
+}
+
+/* ----- footer ----- */
+footer {
+    background: #000;
+    color: #8a8a8a;
+    font-size: 14px;
+    padding: 60px 0 20px;
+}
+
+footer p {
+    color: #8a8a8a;
+}
+
+
+footer h3 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.footer-logo,
+.footer-links,
+.footer-redes {
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    flex-basis: 30%;
+    text-align: center;
+}
+
+.footer-links {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-links img {
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+.footer-redes {
+    flex-basis: 24%;
+    text-align: center;
+}
+
+.footer-redes a {
+    color: #8a8a8a;
+    transition: color 0.3s ease;
+}
+
+.footer-redes a:hover {
+    color: white;
+
+}
+
+ul {
+    list-style-type: none;
+}
+
+footer hr {
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+}
+
+.copyright {
+    text-align: center;
+}
+
+footer img {
+    max-width: 180px;
+    height: auto;
+}
+
+/* ----- Todos os Produtos ----- */
+
+.row-2 {
+    justify-content: space-between;
+    margin: 100px auto 50px;
+}
+
+select {
+    border: 1px solid #e5ff3b;
+    padding: 5px;
+}
+
+select:focus {
+    outline: none;
+}
+
+.pagina-btn {
+    margin: 0 auto 80px;
+}
+
+.pagina-btn span {
+    display: inline-block;
+    border: 1px solid #e5ff3b;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.pagina-btn span:hover {
+    background: #e5ff3b;
+    color: #fff;
+}
+
+/*--------- Detalhes produtos --------*/
+
+.produto {
+    margin-top: 80px;
+}
+
+.produto .col-2 img {
+    padding: 0;
+}
+
+.produto .col-2 {
+    padding: 20px;
+}
+
+.produto .col-2 h4 {
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.produto select {
+    display: block;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.produto input {
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 1px solid #e5ff3b;
+}
+
+input:focus {
+    outline: none;
+}
+.produto-p{
+  text-align: center;
+}
+
+.small-img-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.small-img-col {
+    flex-basis: 24%;
+    cursor: pointer;
+}
+
+/* ---- itens carrinho----*/
+.carinho-pagina {
+    margin: 80px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.carrinho-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+th {
+    text-align: left;
+    padding: 5px;
+    color: #fff;
+    background: #d9e52f;
+    font-weight: normal;
+}
+
+td {
+    padding: 10px 5px;
+}
+
+td input {
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+}
+
+td a {
+    color: #d9e52f;
+    font-size: 12px;
+}
+
+td img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.total-preço {
+    display: grid;
+    justify-content: end;
+}
+
+.total-preço table {
+    margin-right: 100px;
+    border-top: 3px solid #d9e52f;
+    width: 100%;
+    max-width: 500px;
+}
+
+td:last-child {
+    text-align: right;
+}
+
+th:last-child {
+    text-align: right;
+}
+
+.Comprar {
+    background: hsl(58, 93%, 48%);
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0);
+    text-align: center;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.Comprar:hover {
+    background: #563434;
+}
+
+/* -------- Página da conta--------*/
+.conta-pagina {
+    padding: 50px 0;
+    background: radial-gradient(#fff, #66d894);
+}
+
+.form-container {
+    background: #fff;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    padding: 20px 0;
+    margin: auto;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.form-btn {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 0px;
+    color: #555;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.form-container form {
+    max-width: 300px;
+    padding: 0 20px;
+    position: absolute;
+    margin: 30px;
+    margin-top: 50px;
+    transition: transform 1s;
+}
+
+form label {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: left;
+    padding: 5px;
+    font-size: 20px;
+}
+
+form input {
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+}
+
+form .btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+form .btn:focus {
+    outline: none;
+}
+
+form a,
+p {
+    font-size: 14px;
+    text-align: center;
+}
+
+dialog {
+  width: 400px; 
+  max-width: 90%; 
+  border: none;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background-color: #fff; 
+  z-index: 1000; 
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#closeModal {
+  padding: 12px 25px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#closeModal {
+  background-color: #e63946;
+  color: white;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+}
+
+
+.form-a:hover {
+    color: #563434;
+}
+
+.body_compra {
+    background-color: #ffffff;
+}
+dialog input{
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    justify-content: center;
+    margin: 10px 0;
+
+}
+
+/* Form de cadastro */
+
+.formCadastro {
+
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+
+}
+ 
+.Cadastrar {
+    color: black;
+    background-color: #ffffff;
+    padding: 30px 50px 50px;
+    box-shadow: 0 4px 10px rgb(0, 0, 0);
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 10px;
+}
+
+.img_Cadastro {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: auto;
+    box-shadow: 0 4px 10px rgb(0, 0, 0);
+}
+
+
+.corpo_cadastro {
+    background-color: rgb(255, 251, 13);
+}
+
+/* Pagina de Contato */
+
+  .cssform input[type="text"], 
+  input[type="email"], 
+  textarea{
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    border: 2px solid #d9e52f;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.ContatoSite {
+    text-align: center;
+}
+
+.Formulario {
+    background: white;
+}
+
+.Formulario-2 {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin: auto;
+    max-width: 600px;
+    transition: transform 0.3s ease;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.EnviarFormulario {
+    background-color: black;
+    color: white;
+    padding: 10px 100px;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.EnviarFormulario:hover {
+    background-color: hsl(58, 93%, 48%);
+    transform: scale(1.1);
+}
+
+/* Pagina de compra */
+
+
+dialog::backdrop{
+  background-color: #5555557a;
+ 
+}
+
+#form-compra{
+  height: 300px;
+}
+dialog{
+  text-align: center;
+  border: none;
+  border-radius: 1px;
+  padding: 100px;
+  justify-content: center;
+
+}
+
+.popup {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+ .user-name {
+    display: flex; /* Flexbox para garantir o controle de alinhamento */
+    justify-content: flex-end; /* Alinha o conteúdo ao lado direito */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+    padding: 10px;
+    flex-grow: 1; /* Faz com que o .user-name ocupe o espaço disponível */
+}
+
+
+
+
+
+dialog {
+  width: 400px; 
+  max-width: 90%; 
+  border: none;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background-color: #fff; 
+  z-index: 1000; 
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#closeModal {
+  padding: 12px 25px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#closeModal {
+  background-color: #e63946;
+  color: white;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+}
+
+.removerProduto {
+    background: hsl(58, 93%, 48%);
+    color: #fff;
+    text-shadow: 1px 1px 2.5px rgba(0, 0, 0);
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+/* Pedido */
+
+.containerRecibo {
+    max-width: 800px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+header.numeroPedidoRecibo {
+    background-color: hsl(58, 93%, 48%);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 3px solid #ddd;
+}
+
+header.numeroPedidoRecibo h1 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+header.numeroPedidoRecibo p {
+    font-size: 14px;
+}
+
+.valorRecibo, .pagamentoRecibo, .entregaRecibo, .produtoRecibo, .timelineRecibo, .avaliacaoRecibo {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.valorRecibo h2, .pagamentoRecibo h2, .entregaRecibo h2, .produtoRecibo h2, .timelineRecibo h2, .avaliacaoRecibo h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #444;
+    font-weight: 600;
+}
+
+.valorRecibo p, .pagamentoRecibo p, .entregaRecibo p, .produtoRecibo p {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.valorRecibo .valorTotalRecibo {
+    font-weight: bold;
+    color: green;
+}
+
+.produtoRecibo img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.avaliacaoRecibo {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.avaliacaoRecibo h2 {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.avaliacaoRecibo form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.avaliacaoRecibo label {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.avaliacaoRecibo select, 
+.avaliacaoRecibo textarea {
+    font-size: 14px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.avaliacaoRecibo select:focus, 
+.avaliacaoRecibo textarea:focus {
+    outline: none;
+    border-color: hsl(58, 93%, 48%);
+    box-shadow: 0 0 8px rgba(255, 174, 47, 0.4);
+}
+
+.avaliacaoRecibo textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.avaliacaoRecibo button {
+    background-color: hsl(58, 93%, 48%);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.avaliacaoRecibo button:hover {
+    background-color: hsl(58, 93%, 43%);
+}
+
+.avaliacaoRecibo button:active {
+    transform: scale(0.98);
+    background-color: hsl(58, 93%, 38%);
+}
+
+.avaliacaoRecibo button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 174, 47, 0.5);
+}
+
+@media (max-width: 600px) {
+    .containerRecibo {
+        padding: 15px;
+    }
+
+    .avaliacaoRecibo h2 {
+        font-size: 16px;
+    }
+
+    .avaliacaoRecibo label, 
+    .avaliacaoRecibo select, 
+    .avaliacaoRecibo textarea,
+    .avaliacaoRecibo button {
+        font-size: 13px;
+    }
+}

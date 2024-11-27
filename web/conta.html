@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Vesty-Kids - Página da Conta - </title>
+    <link rel="icon" href="img/logovesty.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+    <body>
+        
+    <header>    
+    <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img src="img/logovesty.png" width="125px"></a>
+    </div>
+</header>
+
+<!------- Página de Login ------>
+<div class="conta-pagina">
+     <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="img/imagem1.png" width="100%">
+            </div>
+            <div class="col-2">
+               <div class="form-container">
+                <div class="form-btn">
+
+                
+                    <span>Login</span>
+                    <hr id="Indicador">
+                </div>
+
+                   <form action="javaJSP/login.jsp" method="get" enctype="multipart/form-data" class="formLogar" >
+                       
+                    <label for="email">Login</label>
+                    
+                    <input type="text" id="txtLogin" name=txtLogin required>
+                    
+                    <label for="Senha">Senha</label>
+                    <input type="password" id="passSenha" name=passSenha required>
+                    
+                    <input value="Login" type="submit" class="btn" id="btnEnvia" > 
+                        
+                    <input value="Registrar" type="submit" class="btn" onclick = "window.location.assign('cadastro.html');" >
+                </form>
+               </div>
+            </div>
+        </div>
+     </div>
+    
+</div>
+
+    </body>
+</html>
