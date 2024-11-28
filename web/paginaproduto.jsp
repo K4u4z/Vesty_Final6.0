@@ -1,9 +1,7 @@
 <%@page import="javaBeans.Produtos"%>
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-
     String s_pkuser;
     String s_nome = "";
     String s_email = "";
@@ -17,8 +15,6 @@
         s_email = String.valueOf(session.getAttribute("email"));
         s_nivel = String.valueOf(session.getAttribute("nivel"));
     }
-
-
 %>
 
 <!DOCTYPE html>
@@ -33,19 +29,8 @@
 </head>
 <body>
    <%
-    // Obtendo o produto passado pelo servlet
     Produtos produto = (Produtos) request.getAttribute("produto");
-    
-    // Log para debug
-    System.out.println("Produto na JSP: " + (produto != null ? produto.getNome() : "null"));
-    
-    if (produto == null) {
-        response.sendRedirect("produtos.jsp");
-        return;
-    }
-    
-    // Verificação adicional dos campos principais
-    if (produto.getNome() == null || produto.getValor() == 0) {
+    if (produto == null || produto.getNome() == null || produto.getValor() == 0) {
         response.sendRedirect("produtos.jsp");
         return;
     }
@@ -67,12 +52,11 @@
                     </ul>
                 </nav>
                 <a href="carrinho.jsp"><img src="img/cart.png" width="30px" height="30px" alt="Carrinho"></a>
-                  <div class="user-name">
-                        <% if (!s_nome.isEmpty()) { %>
-                    <p > <img src="img/user.png" width="30px" height="30px" alt="user">Olá, <%= s_nome %>!<p>
+                <div class="user-name">
+                    <% if (!s_nome.isEmpty()) { %>
+                        <p><img src="img/user.png" width="30px" height="30px" alt="user">Olá, <%= s_nome %>!</p>
                     <% } %>
-                    
-                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -92,7 +76,7 @@
                 <% } %>
             </div>
             <div class="col-2">
-                <p>Home / <%= produto.getNome() %></p>
+                <p><%= produto.getPkProd() %> / <%= produto.getNome() %></p>
                 <h1><%= produto.getNome() %></h1>
                 <h4>R$ <%= String.format("%.2f", produto.getValor()) %></h4>
                 <select>
@@ -103,8 +87,10 @@
                     <option>De 11 a 14 anos</option>
                 </select>
                 <input type="number" value="1" min="1">
-                <form action="AdicionarCarrinho" method="post">
+                <form action="AdicionarCarrinho" method="post" onsubmit="showPopup('<%= produto.getNome() %>'); return true;">
                     <input type="hidden" name="id" value="<%= produto.getPkProd() %>">
+                    <input type="hidden" name="nome" value="<%= produto.getNome() %>">
+                    <input type="hidden" name="valor" value="<%= produto.getValor() %>">
                     <button type="submit" class="btn">Adicionar ao Carrinho</button>
                 </form>
                 <h4>Detalhes do Produto</h4>
@@ -113,11 +99,17 @@
         </div>
     </div>
 
+    <!-- Popup -->
+    <div id="popup" class="popup"></div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>Direitos Reservados para Vesty Kids.</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+     <script src="js/popup.js"></script>
 </body>
 </html>

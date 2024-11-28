@@ -52,12 +52,11 @@
                 </nav>
                 <a href="carrinho.jsp"><img src="img/cart.png" width="30px" height="30px" alt="Carrinho"></a>
                 
-                 <div class="user-name">
-                        <% if (!s_nome.isEmpty()) { %>
-                    <p > <img src="img/user.png" width="30px" height="30px" alt="user">Olá, <%= s_nome %>!<p>
+                <div class="user-name">
+                    <% if (!s_nome.isEmpty()) { %>
+                        <p><img src="img/user.png" width="30px" height="30px" alt="user"> Olá, <%= s_nome %>!</p>
                     <% } %>
-                    
-                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -101,7 +100,8 @@
             <% if (!produtos.isEmpty()) { 
                 for (Produtos produto : produtos) { %>
                 <div class="col-4 produto-item">
-                    <a href="paginaproduto?id=<%= produto.getPkProd() %>">
+                    <!-- Link para o produto -->
+                    <a href="#" onclick="enviarFormulario('<%= produto.getPkProd() %>')" class="produto-link">
                         <% if (produto.getImagemBase64() != null && !produto.getImagemBase64().isEmpty()) { %>
                             <img src="data:image/jpeg;base64,<%= produto.getImagemBase64() %>" 
                                  alt="<%= produto.getNome() %>" 
@@ -126,14 +126,6 @@
                     <p>Nenhum produto disponível no momento.</p>
                 </div>
             <% } %>
-        </div>
-
-        <div class="pagina-btn">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>&#8594;</span>
         </div>
     </div>
 
@@ -166,6 +158,20 @@
         </div>
     </footer>
     
+    <!-- Formulário oculto -->
+    <form id="produtoForm" action="paginaproduto" method="post" style="display: none;">
+        <input type="hidden" name="id" id="produtoId">
+    </form>
+
+    <script>
+        function enviarFormulario(produtoId) {
+            // Define o ID do produto no formulário oculto
+            document.getElementById('produtoId').value = produtoId;
+
+            // Submete o formulário via POST
+            document.getElementById('produtoForm').submit();
+        }
+    </script>
     <script src="js/popup.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
 
     if (session.getAttribute("pkuser") == null) {
         response.sendRedirect("conta.html");
+        return;
     } else {
         s_pkuser = String.valueOf(session.getAttribute("pkuser"));
         s_nome = String.valueOf(session.getAttribute("nome"));
@@ -15,13 +16,33 @@
         s_nivel = String.valueOf(session.getAttribute("nivel"));
     }
 
+    // Inicializa variáveis para o formulário
+    String nome = "", descricao = "", valor = "";
+    String pk_prod = request.getParameter("pk_prod");
+    String imagemBase64 = null;
+    String mensagemErro = "";
+    boolean isEdicao = false;
 
-
-
-
+    // Verifica se há um ID e tenta buscar os dados do produto
+    if (pk_prod != null && !pk_prod.isEmpty()) {
+        try {
+            int id = Integer.parseInt(pk_prod);
+            javaBeans.Produtos prod = new javaBeans.Produtos();
+            prod.pk_prod = id;
+            if (prod.buscar()) {
+                nome = prod.nome;
+                descricao = prod.descricao;
+                valor = String.format("%.2f", prod.valor);
+                imagemBase64 = prod.imagemBase64;
+                isEdicao = true; // Sinaliza que estamos editando
+            } else {
+                mensagemErro = "Produto com ID " + pk_prod + " não encontrado.";
+            }
+        } catch (NumberFormatException e) {
+            mensagemErro = "O ID do produto deve ser um número válido.";
+        }
+    }
 %>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -115,38 +136,29 @@
                 display: block;
                 margin: 10px 0;
             }
+            
+            .error-message {
+                color: red;
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
-        <%
-            // Verifica se usuário está logado
-            
-            // Inicializa variáveis
-            String nome = "", descricao = "", valor = "";
-            String pk_prod = request.getParameter("pk_prod");
-            String imagemBase64 = null;
-            
-            // Se pkProd existe, busca dados do produto
-            if (pk_prod != null && !pk_prod.isEmpty()) {
-                javaBeans.Produtos prod = new javaBeans.Produtos();
-                prod.pk_prod = Integer.parseInt(pk_prod);
-                if (prod.buscar()) {
-                    nome = prod.nome;
-                    descricao = prod.descricao;
-                    valor = String.format("%.2f", prod.valor);
-                    imagemBase64 = prod.imagemBase64;
-                }
-            }
-        %>
-        
         <div class="container">
             <h2 style="text-align: center;">Cadastro de Produto</h2>
             
-            <!-- Altere esta linha -->
-        <form action="../CadProduto" method="POST" enctype="multipart/form-data">
-                <% if (pk_prod != null && !pk_prod.isEmpty()) { %>
-                    <input type="hidden" name="pk_prod" value="<%= pk_prod %>">
-                <% } %>
+            <!-- Exibe mensagens de erro, se houver -->
+            <% if (!mensagemErro.isEmpty()) { %>
+                <div class="error-message"><%= mensagemErro %></div>
+            <% } %>
+            
+            <form action="../CadProduto" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="pk_prod">ID do Produto (Para edição/exclusão):</label>
+                    <input type="number" id="pk_prod" name="pk_prod" value="<%= pk_prod != null ? pk_prod : "" %>" step="1" min="1">
+                </div>
                 
                 <div class="form-group">
                     <label for="nome">Nome:</label>
@@ -176,12 +188,10 @@
                 <div class="buttons">
                     <button type="submit" name="gravar" value="gravar" class="btn btn-primary">Salvar</button>
                     
-       
-                        <button type="submit" name="deletar" value="deletar" class="btn btn-danger" 
-                                onclick="return confirm('Tem certeza que deseja excluir este produto?')">
-                            Excluir
-                        </button>
- 
+                    <!-- Exibe os botões de alteração e exclusão, independentemente do ID -->
+                    <button type="submit" name="alterar" value="alterar" class="btn btn-secondary">Alterar</button>
+                    <button type="submit" name="deletar" value="deletar" class="btn btn-danger" 
+                            onclick="return confirm('Tem certeza que deseja excluir este produto?')">Excluir</button>
                     
                     <a href="../index.jsp" class="btn btn-secondary">Voltar</a>
                 </div>

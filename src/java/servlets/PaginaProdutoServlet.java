@@ -13,7 +13,19 @@ public class PaginaProdutoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
+        // O comportamento para GET continua o mesmo.
+        handleRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // POST também será tratado pelo mesmo método.
+        handleRequest(request, response);
+    }
+
+    private void handleRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String idParam = request.getParameter("id");
         
         // Log para debug

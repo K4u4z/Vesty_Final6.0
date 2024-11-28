@@ -16,28 +16,27 @@ import javax.servlet.http.Part;
 @MultipartConfig
 public class CadProduto extends HttpServlet {
     private String statusSQL;
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String sHTML = "";
-        
-        // Verifica se usuário está logado
+
+        // Verifica se o usuário está logado
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("pkuser") == null) {
             response.sendRedirect("../conta.html");
             return;
         }
-        
-        
+
         try {
             // Instancia o objeto Produtos
             Produtos prod = new Produtos();
-            
+
             // Recupera os dados do formulário
             prod.descricao = request.getParameter("descricao");
             prod.nome = request.getParameter("nome");
-            
+
             // Trata o valor como double
             String valorStr = request.getParameter("valor");
             if (valorStr != null && !valorStr.isEmpty()) {
@@ -49,18 +48,23 @@ public class CadProduto extends HttpServlet {
                     return;
                 }
             }
-            
+
             // Recupera o ID se estiver editando
             String pk_prodStr = request.getParameter("pk_prod");
             if (pk_prodStr != null && !pk_prodStr.isEmpty()) {
-                prod.pk_prod = Integer.parseInt(pk_prodStr);
+                try {
+                    prod.pk_prod = Integer.parseInt(pk_prodStr);
+                } catch (NumberFormatException e) {
+                    statusSQL = "Erro: ID do produto inválido!";
+                    mostrarPagina(response, request, sHTML);
+                    return;
+                }
             }
-            
+
             // Processa a imagem
             Part filePart = request.getPart("arquivo");
             if (filePart != null && filePart.getSize() > 0) {
                 String contentType = filePart.getContentType();
-                // Verifica se é uma imagem
                 if (contentType != null && contentType.startsWith("image/")) {
                     prod.foto = filePart.getInputStream();
                     prod.tamanho = filePart.getSize();
@@ -70,35 +74,51 @@ public class CadProduto extends HttpServlet {
                     return;
                 }
             }
-            
-            // Processa as ações
+
+            // Determina a ação
             if (request.getParameter("gravar") != null) {
                 prod.gravar();
-                if (prod.statusSQL == null) {
-                    statusSQL = "Produto salvo com sucesso!";
+                statusSQL = prod.statusSQL == null ? "Produto salvo com sucesso!" : prod.statusSQL;
+            } else if (request.getParameter("alterar") != null) {
+                if (prod.pk_prod > 0) {
+                    Produtos existente = new Produtos();
+                    existente.pk_prod = prod.pk_prod;
+                    if (existente.buscar()) {
+                        prod.alterar();
+                        statusSQL = prod.statusSQL == null ? "Produto alterado com sucesso!" : prod.statusSQL;
+                    } else {
+                        statusSQL = "Erro: Produto não encontrado!";
+                    }
                 } else {
-                    statusSQL = prod.statusSQL;
+                    statusSQL = "Erro: ID do produto não especificado!";
                 }
-            }
-            
-            if (request.getParameter("deletar") != null) {
-                prod.deletar();
-                if (prod.statusSQL == null) {
-                    statusSQL = "Produto excluído com sucesso!";
+            } else if (request.getParameter("deletar") != null) {
+                if (prod.pk_prod > 0) {
+                    Produtos existente = new Produtos();
+                    existente.pk_prod = prod.pk_prod;
+                    if (existente.buscar()) {
+                        prod.deletar();
+                        statusSQL = prod.statusSQL == null ? "Produto excluído com sucesso!" : prod.statusSQL;
+                    } else {
+                        statusSQL = "Erro: Produto não encontrado!";
+                    }
                 } else {
-                    statusSQL = prod.statusSQL;
+                    statusSQL = "Erro: ID do produto não especificado!";
                 }
+            } else {
+                statusSQL = "Ação inválida!";
             }
-            
+
             mostrarPagina(response, request, sHTML);
-            
+
         } catch (Exception e) {
+            e.printStackTrace();
             statusSQL = "Erro ao processar a requisição: " + e.getMessage();
             mostrarPagina(response, request, sHTML);
         }
     }
-    
-    private void mostrarPagina(HttpServletResponse response, HttpServletRequest request, String sHTML) 
+
+    private void mostrarPagina(HttpServletResponse response, HttpServletRequest request, String sHTML)
             throws IOException {
         try (PrintWriter out = response.getWriter()) {
             sHTML = "<!DOCTYPE html>"

@@ -115,35 +115,38 @@ public class Produtos extends Conectar {
         }
     }
 
-    public void alterar() {
-        try {
-            sql = "UPDATE produtos SET nome=?, descricao=?, valor=?";
-            if (tamanho > 0) sql += ", foto=?";
-            sql += " WHERE nome=?";
-            
+  public void alterar() {
+    try {
+        // Se uma nova imagem foi enviada
+        if (foto != null && tamanho > 0) {
+            sql = "UPDATE produtos SET nome = ?, descricao = ?, valor = ?, foto = ? WHERE pk_prod = ?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, nome);
+            ps.setString(2, descricao);
+            ps.setDouble(3, valor);
+            ps.setBlob(4, foto, tamanho);
+            ps.setInt(5, pk_prod);
+        } else {
+            // Atualização sem alterar a foto
+            sql = "UPDATE produtos SET nome = ?, descricao = ?, valor = ? WHERE pk_prod = ?";
             ps = con.prepareStatement(sql);
             ps.setString(1, nome);
             ps.setString(2, descricao);
             ps.setDouble(3, valor);
             ps.setInt(4, pk_prod);
-            
-            if (tamanho > 0) {
-                ps.setBlob(4, foto, tamanho);
-                ps.setInt(5, pk_prod);
-            } else {
-                ps.setInt(4, pk_prod);
-            }
-            
-            ps.executeUpdate();
-            this.statusSQL = null;
-        } catch (SQLException ex) {
-            this.statusSQL = "Erro ao alterar produto! <br> " + ex.getMessage();
         }
+        
+        ps.executeUpdate();
+        this.statusSQL = null;
+    } catch (SQLException ex) {
+        this.statusSQL = "Erro ao alterar produto! <br> " + ex.getMessage();
+        Logger.getLogger(Produtos.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
 
     public void deletar() {
         try {
-            sql = "DELETE FROM produtos WHERE nome = ?";
+            sql = "DELETE FROM produtos WHERE pk_prod = ?";
             ps = con.prepareStatement(sql);
             ps.setInt(1, pk_prod);
             ps.executeUpdate();
